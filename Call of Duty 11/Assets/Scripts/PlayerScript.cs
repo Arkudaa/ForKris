@@ -12,6 +12,7 @@ public class PlayerScript : MonoBehaviour
     public AudioSource lasersound;
     //public AudioSource ammoPickup;
     public ParticleSystem muzzleflash;
+    float Time;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,7 +24,7 @@ public class PlayerScript : MonoBehaviour
     {
         rayFromPlayer = playerCamera.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0));
         Debug.DrawRay(rayFromPlayer.origin, rayFromPlayer.direction * 100, Color.green);
-
+        
         if (Input.GetKeyDown(KeyCode.F))
         {
             if (Physics.Raycast(rayFromPlayer, out hit, 100) && ammo>0)
@@ -48,6 +49,7 @@ public class PlayerScript : MonoBehaviour
             print("YOU HAVE " + ammo + " AMMO LEFT");
             muzzleflash.Play();
             lasersound.Play();
+
         }
     } 
 
